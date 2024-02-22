@@ -4,7 +4,7 @@
 
 ## Description
 
-SoW SSO is a WordPress plugin that enables seamless Single Sign-On (SSO) integration between your Identity Provider (IDP) and WordPress. This cutting-edge plugin eliminates the hassle of multiple logins and streamlines user authentication across platforms. Say goodbye to login fatigue and embrace the simplicity of unified authentication with Shades of Web's SSO Integration plugin for WordPress.
+`SAML SSO by SoW` is a WordPress plugin that enables seamless Single Sign-On (SSO) integration between your Identity Provider (IDP) and WordPress. This cutting-edge plugin eliminates the hassle of multiple logins and streamlines user authentication across platforms. Say goodbye to login fatigue and embrace the simplicity of unified authentication with Shades of Web's SSO Integration plugin for WordPress.
 
 ## Features
 
@@ -16,7 +16,7 @@ SoW SSO is a WordPress plugin that enables seamless Single Sign-On (SSO) integra
 
 ## Installation
 
-1. Download the `sow-sso` directory to your `wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
+1. Download the plugin to your `wp-content/plugins/` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Navigate to the 'SoW SSO' settings page in the network admin menu to configure SSO settings.
 
