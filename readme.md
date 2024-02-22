@@ -1,4 +1,4 @@
-# 🌐 SoW SSO - Shades of Web's SSO Integration Hub
+# 🌐 SAML SSO by SoW - Shades of Web's SSO Integration Hub
 
 ![SoW SSO Logo](./assets/images/SSO.png)
 
