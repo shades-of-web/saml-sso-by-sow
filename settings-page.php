@@ -1,7 +1,6 @@
 <?php
 
 
-
 add_action('network_admin_menu', function () {
   add_menu_page('SoW SSO', 'SoW SSO', 'manage_network_options', 'sow-sso-dashboard', 'sow_sso_dashboard_callback', 'dashicons-superhero-alt');
 });
