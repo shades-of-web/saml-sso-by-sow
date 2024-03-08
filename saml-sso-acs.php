@@ -48,14 +48,14 @@ if (empty($auth->getErrors())) {
 
     // Redirect super admins to the network admin dashboard.
     if (is_super_admin($user->ID)) {
-      wp_redirect(network_admin_url());
+      wp_safe_redirect(network_admin_url());
       exit;
     }
 
     // Handle user redirects based on the number of sites they belong to.
     $sites = get_blogs_of_user($user->ID);
     if (count($sites) === 1) {
-      wp_redirect(array_shift($sites)->siteurl . '/wp-admin/');
+      wp_safe_redirect(array_shift($sites)->siteurl . '/wp-admin/');
       exit;
     }
 
