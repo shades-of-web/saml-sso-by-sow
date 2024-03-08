@@ -7,9 +7,9 @@ use OneLogin\Saml2\Auth;
 /**
  * Load the WordPress environment and SAML configuration files.
  */
-require_once dirname(__DIR__, 3) . '/wp-load.php';
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/saml-sso-constants-and-functions.php';
+include_once dirname(__DIR__, 3) . '/wp-load.php';
+include_once __DIR__ . '/vendor/autoload.php';
+include_once __DIR__ . '/saml-sso-constants-and-functions.php';
 
 /**
  * Define SAML settings from WordPress options.
@@ -62,7 +62,7 @@ if (empty($auth->getErrors())) {
     }
 
     // Render a template for users with multiple sites.
-    include_once__DIR__ . '/page-choose-user-site.php';
+    include_once __DIR__ . '/page-choose-user-site.php';
   } else {
     // Error handling for unrecognized user.
     wp_die('Sorry, no user found with that email address.', 'SSO Login Error');

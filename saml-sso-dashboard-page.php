@@ -31,7 +31,7 @@ add_action($hook_suffix, function () {
  */
 function saml_sso_dashboard_callback()
 {
-  include_once__DIR__ . '/saml-sso-dashboard-page.php';
+  include_once __DIR__ . '/page-saml-sso-dashboard.php';
 }
 
 /**
