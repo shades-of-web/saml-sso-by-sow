@@ -56,4 +56,4 @@ Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) fi
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
+- See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
