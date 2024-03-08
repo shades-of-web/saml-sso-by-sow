@@ -13,10 +13,10 @@
  * Network: true
  */
 
-// Include necessary constants and functions for the SAML SSO plugin.
+// include_oncenecessary constants and functions for the SAML SSO plugin.
 require_once __DIR__ . '/saml-sso-constants-and-functions.php';
 
-// Include the SAML SSO dashboard page setup.
+// include_oncethe SAML SSO dashboard page setup.
 require_once __DIR__ . '/saml-sso-dashboard-page.php';
 
 // Enable SSO functionality if it is enabled in the plugin settings.
@@ -30,7 +30,7 @@ if (get_option_data('saml_sso_enable_sso') === 'yes') {
     } else {
       // Replace default login form with SSO login if backdoor is not used
       add_action('login_form', function () {
-        include __DIR__ . '/saml-sso-login.php';
+        include_once__DIR__ . '/saml-sso-login.php';
         exit;
       });
     }

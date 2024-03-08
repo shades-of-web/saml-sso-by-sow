@@ -62,7 +62,7 @@ if (empty($auth->getErrors())) {
     }
 
     // Render a template for users with multiple sites.
-    include __DIR__ . '/page-choose-user-site.php';
+    include_once__DIR__ . '/page-choose-user-site.php';
   } else {
     // Error handling for unrecognized user.
     wp_die('Sorry, no user found with that email address.', 'SSO Login Error');
