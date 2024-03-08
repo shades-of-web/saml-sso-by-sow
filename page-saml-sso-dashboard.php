@@ -41,7 +41,7 @@ $saml_sso_idp_509_certificate = get_option_data('saml_sso_idp_509_certificate') 
           <div class="d-flex justify-content-start align-items-center gap-4">
             <h2 class="m-0 h5">Enable Backdoor Login</h2>
             <input name="saml_sso_enable_backdoor" type="checkbox" value="yes" <?php checked('yes', $saml_sso_enable_backdoor) ?> data-toggle="toggle" data-size="sm">
-            <input type="text" name="saml_sso_backdoor_key" class="form-control w-50" value='<?= $saml_sso_backdoor_key ?>'>
+            <input type="text" name="saml_sso_backdoor_key" class="form-control w-50" value='<?= esc_html($saml_sso_backdoor_key); ?>'>
           </div>
 
           <div class="d-flex justify-content-start align-items-center gap-4">
