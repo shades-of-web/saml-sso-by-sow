@@ -1,5 +1,7 @@
 <?php
 
+// test
+
 /**
  * SAML SSO Dashboard Page
  *
@@ -7,15 +9,12 @@
  * facilitating configuration of the SSO features and parameters.
  */
 
-// Initializes the dashboard menu according to the site type (multisite or single).
-$hook_suffix = is_multisite() ? 'network_admin_menu' : 'admin_menu';
-add_action($hook_suffix, 'saml_sso_add_dashboard_page');
-
 /**
+ * Initializes the dashboard menu according to the site type (multisite or single).
  * Adds the SAML SSO settings page to the WordPress dashboard.
  */
-function saml_sso_add_dashboard_page()
-{
+$hook_suffix = is_multisite() ? 'network_admin_menu' : 'admin_menu';
+add_action($hook_suffix, function () {
   $capability = is_multisite() ? 'manage_network_options' : 'manage_options';
   add_menu_page(
     'SAML SSO by Shades of Web',
@@ -25,14 +24,14 @@ function saml_sso_add_dashboard_page()
     'saml_sso_dashboard_callback',
     'dashicons-superhero-alt'
   );
-}
+});
 
 /**
  * Callback function to display the content of the SAML SSO settings page.
  */
 function saml_sso_dashboard_callback()
 {
-  include __DIR__ . 'saml-sso-dashboard-page.php';
+  include __DIR__ . '/saml-sso-dashboard-page.php';
 }
 
 /**
