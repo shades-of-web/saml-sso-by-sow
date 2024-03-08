@@ -32,7 +32,7 @@ function saml_sso_add_dashboard_page()
  */
 function saml_sso_dashboard_callback()
 {
-  include 'page-saml-sso-dashboard.php';
+  file_exists(__DIR__ . 'saml-sso-dashboard-page.php') ? include __DIR__ . 'saml-sso-dashboard-page.php' : wp_die('SAML SSO dashboard page file not found.');
 }
 
 /**

@@ -25,7 +25,7 @@ $saml_sso_idp_sso_service_url = get_option_data('saml_sso_idp_sso_service_url') 
 $saml_sso_idp_509_certificate = get_option_data('saml_sso_idp_509_certificate') ?? '';
 ?>
 
-<form method="post" action="<?php echo add_query_arg('action', 'sow-sso-save', 'edit.php') ?>">
+<form method="post" action="<?= esc_url(add_query_arg('action', 'sow-sso-save', 'edit.php')); ?>">
   <div class="container-fluid mt-3">
     <h1 class="h3">SAML SSO by Shades of Web</h1>
     <hr />
@@ -52,34 +52,34 @@ $saml_sso_idp_509_certificate = get_option_data('saml_sso_idp_509_certificate') 
           <h2 class="h4">Service Provider Configurations</h2>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">Entity ID</h2>
-            <input name="saml_sso_sp_entity_id" type="text" class="form-control" value='<?= $saml_sso_sp_entity_id ?>'>
+            <input name="saml_sso_sp_entity_id" type="text" class="form-control" value='<?= esc_html($saml_sso_sp_entity_id); ?>'>
           </div>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">Name ID Format</h2>
-            <input name="saml_sso_sp_name_id_format" type="text" class="form-control" value='<?= $saml_sso_sp_name_id_format ?>'>
+            <input name="saml_sso_sp_name_id_format" type="text" class="form-control" value='<?= esc_html($saml_sso_sp_name_id_format); ?>'>
           </div>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">ACS URL</h2>
-            <input name="saml_sso_acs_url" type="text" class="form-control" value='<?= SAML_SSO_ACS_URL ?>' readonly>
+            <input name="saml_sso_acs_url" type="text" class="form-control" value='<?= esc_url(SAML_SSO_ACS_URL); ?>' readonly>
           </div>
           <hr />
           <h2 class="h4">IDP Configurations</h2>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">Entity ID</h2>
-            <input name="saml_sso_idp_entity_id" type="text" class="form-control" value='<?= $saml_sso_idp_entity_id ?>'>
+            <input name="saml_sso_idp_entity_id" type="text" class="form-control" value='<?= esc_html($saml_sso_idp_entity_id); ?>'>
           </div>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">SSO Service URL</h2>
-            <input name="saml_sso_idp_sso_service_url" type="text" class="form-control" value='<?= $saml_sso_idp_sso_service_url ?>'>
+            <input name="saml_sso_idp_sso_service_url" type="text" class="form-control" value='<?= esc_url($saml_sso_idp_sso_service_url) ?>'>
           </div>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">x509 Certificate</h2>
-            <textarea rows="6" name="saml_sso_idp_509_certificate" type="text" class="form-control"><?= $saml_sso_idp_509_certificate ?></textarea>
+            <textarea rows="6" name="saml_sso_idp_509_certificate" type="text" class="form-control"><?= esc_html($saml_sso_idp_509_certificate); ?></textarea>
           </div>
         </div>
       </div>
       <div class=" col-6 d-none d-md-block text-right">
-        <img src="<?= plugin_dir_url(__FILE__) ?>assets/images/SSO.png" alt="SSO Image" class="img-fluid w-75" />
+        <img src="<?= esc_url(plugin_dir_url(__FILE__) . 'assets/images/SSO.png'); ?>" alt="SSO Image" class="img-fluid w-75" />
       </div>
     </div>
   </div>

@@ -28,16 +28,16 @@ if (!isset($user, $sites)) {
 <body>
   <div class="container vh-100 d-flex flex-column align-items-center">
     <h1>SSO Login Success</h1>
-    <p>Welcome, <?php echo htmlspecialchars($user->display_name); ?>!</p>
+    <p>Welcome, <?= esc_html($user->display_name); ?>!</p>
     <p>Here are the sites you have access to:</p>
     <div class="row">
       <?php foreach ($sites as $site) : ?>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><?php echo htmlspecialchars($site->blogname); ?></h5>
-              <p class="card-text"><?php echo htmlspecialchars($site->siteurl); ?></p>
-              <a href="<?php echo htmlspecialchars($site->siteurl); ?>/wp-admin/" class="btn btn-primary">Go to Dashboard</a>
+              <h5 class="card-title"><?= esc_html($site->blogname); ?></h5>
+              <p class="card-text"><?= esc_html($site->siteurl); ?></p>
+              <a href="<?= esc_url($site->siteurl . '/wp-admin/'); ?>" class="btn btn-primary">Go to Dashboard</a>
             </div>
           </div>
         </div>

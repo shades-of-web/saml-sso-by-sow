@@ -5,9 +5,10 @@ use OneLogin\Saml2\Auth;
 /**
  * Load the WordPress environment and SAML configuration files.
  */
-require_once dirname(__DIR__, 3) . '/wp-load.php';
-require_once 'vendor/autoload.php';
-require_once 'saml-sso-constants.php';
+
+file_exists(dirname(__DIR__, 3) . '/wp-load.php') ? require_once dirname(__DIR__, 3) . '/wp-load.php' : wp_die('WordPress environment not found.');
+file_exists(__DIR__ . '/vendor/autoload.php') ? require_once __DIR__ . '/vendor/autoload.php' : wp_die('SAML SSO constants file not found.');
+file_exists(__DIR__ . '/saml-sso-constants-and-functions.php') ? require_once __DIR__ . '/saml-sso-constants-and-functions.php' : wp_die('SAML SSO constants and functions file not found.');
 
 /**
  * Define SAML settings from WordPress options.
@@ -60,7 +61,7 @@ if (empty($auth->getErrors())) {
     }
 
     // Render a template for users with multiple sites.
-    include './page-choose-user-site.php';
+    file_exists(__DIR__ . '/page-choose-user-site.php') ? include './page-choose-user-site.php' : wp_die('SAML SSO user site selection file not found.');
   } else {
     // Error handling for unrecognized user.
     wp_die('Sorry, no user found with that email address.', 'SSO Login Error');
