@@ -12,11 +12,11 @@
 use SAMLSSO\SamlSsoConfig;
 
 
-wp_enqueue_script('saml-sso-by-sow-bootstrap5-toggle', SamlSsoConfig::$PluginUrl . 'assets/js/bs-toggle.js', array(), '5.0.4', true);
-wp_enqueue_style('saml-sso-by-sow-bootstrap5-toggle', SamlSsoConfig::$PluginUrl . 'assets/css/bs-toggle.css', array(), '5.0.4', 'all');
+wp_enqueue_script('saml-sso-by-sow-bootstrap5-toggle', SamlSsoConfig::$pluginUrl . 'assets/js/bs-toggle.js', array(), '5.0.4', true);
+wp_enqueue_style('saml-sso-by-sow-bootstrap5-toggle', SamlSsoConfig::$pluginUrl . 'assets/css/bs-toggle.css', array(), '5.0.4', 'all');
 
-wp_enqueue_style('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PluginUrl . 'assets/css/bs-5-3-3.css', array(), '5.3.3', 'all');
-wp_enqueue_script('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PluginUrl . 'assets/js/bs-5-3-3.js', array(), '5.3.3', true);
+wp_enqueue_style('saml-sso-by-sow-bootstrap', SamlSsoConfig::$pluginUrl . 'assets/css/bs-5-3-3.css', array(), '5.3.3', 'all');
+wp_enqueue_script('saml-sso-by-sow-bootstrap', SamlSsoConfig::$pluginUrl . 'assets/js/bs-5-3-3.js', array(), '5.3.3', true);
 
 
 $saml_sso_enable_sso = SamlSsoConfig::getOptionData('saml_sso_enable_sso') ?? false;
@@ -65,7 +65,7 @@ $saml_sso_idp_509_certificate = SamlSsoConfig::getOptionData('saml_sso_idp_509_c
           </div>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">ACS URL</h2>
-            <input name="saml_sso_acs_url" type="text" class="form-control" value='<?= esc_url(SamlSsoConfig::$ACSurl); ?>' readonly>
+            <input name="saml_sso_acs_url" type="text" class="form-control" value='<?= esc_url(SamlSsoConfig::$acsUrl); ?>' readonly>
           </div>
           <hr />
           <h2 class="h4">IDP Configurations</h2>
@@ -84,7 +84,7 @@ $saml_sso_idp_509_certificate = SamlSsoConfig::getOptionData('saml_sso_idp_509_c
         </div>
       </div>
       <div class=" col-6 d-none d-md-block text-right">
-        <img src="<?= esc_url(SamlSsoConfig::$PluginUrl . 'assets/images/SSO.png'); ?>" alt="SSO Logo" class="img-fluid w-75" />
+        <img src="<?= esc_url(SamlSsoConfig::$pluginUrl . 'assets/images/SSO.png'); ?>" alt="SSO Logo" class="img-fluid w-75" />
       </div>
     </div>
   </div>
