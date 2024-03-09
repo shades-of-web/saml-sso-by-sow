@@ -1,7 +1,5 @@
 <?php
 
-// test
-
 /**
  * User Sites Page Template
  *
@@ -17,8 +15,20 @@ if (!isset($user, $sites)) {
 
 use SAMLSSO\SamlSsoConfig;
 
-wp_enqueue_style('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PluginUrl . 'assets/css/bs-5-3-3.css', array(), '5.3.3', 'all');
-wp_enqueue_script('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PluginUrl . 'assets/js/bs-5-3-3.js', array(), '5.3.3', true);
+wp_enqueue_style(
+  'saml-sso-by-sow-bootstrap',
+  SamlSsoConfig::$PluginUrl . 'assets/css/bs-5-3-3.css',
+  array(),
+  '5.3.3',
+  'all'
+);
+wp_enqueue_script(
+  'saml-sso-by-sow-bootstrap',
+  SamlSsoConfig::$PluginUrl . 'assets/js/bs-5-3-3.js',
+  array(),
+  '5.3.3',
+  true
+);
 
 ?>
 
@@ -34,15 +44,21 @@ wp_enqueue_script('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PluginUrl . 'asse
 <body>
   <div class="container vh-100 d-flex flex-column align-items-center">
     <h1>SSO Login Success</h1>
-    <p>Welcome, <?= esc_html($user->display_name); ?>!</p>
+    <p>Welcome,
+      <?= esc_html($user->display_name); ?>!
+    </p>
     <p>Here are the sites you have access to:</p>
     <div class="row">
-      <?php foreach ($sites as $site) : ?>
+      <?php foreach ($sites as $site): ?>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title"><?= esc_html($site->blogname); ?></h5>
-              <p class="card-text"><?= esc_html($site->siteurl); ?></p>
+              <h5 class="card-title">
+                <?= esc_html($site->blogname); ?>
+              </h5>
+              <p class="card-text">
+                <?= esc_html($site->siteurl); ?>
+              </p>
               <a href="<?= esc_url($site->siteurl . '/wp-admin/'); ?>" class="btn btn-primary">Go to Dashboard</a>
             </div>
           </div>

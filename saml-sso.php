@@ -37,5 +37,3 @@ if (SamlSsoConfig::getOptionData('saml_sso_enable_sso') === 'yes') {
     }
   });
 }
-
-// test
