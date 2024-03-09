@@ -48,13 +48,22 @@ is_multisite()
  */
 function saml_sso_config_save()
 {
-  $saml_sso_enable_sso = isset($_POST['saml_sso_enable_sso']) && 'yes' === $_POST['saml_sso_enable_sso'] ? 'yes' : 'no';
+  $saml_sso_enable_sso =
+    isset($_POST['saml_sso_enable_sso']) && 'yes' === $_POST['saml_sso_enable_sso']
+    ? 'yes' : 'no';
+
   SamlSsoConfig::updateOptionData('saml_sso_enable_sso', $saml_sso_enable_sso);
 
-  $saml_sso_enable_backdoor = isset($_POST['saml_sso_enable_backdoor']) && 'yes' === $_POST['saml_sso_enable_backdoor'] ? 'yes' : 'no';
+  $saml_sso_enable_backdoor =
+    isset($_POST['saml_sso_enable_backdoor']) && 'yes' === $_POST['saml_sso_enable_backdoor']
+    ? 'yes' : 'no';
+
   SamlSsoConfig::updateOptionData('saml_sso_enable_backdoor', $saml_sso_enable_backdoor);
 
-  $saml_sso_remember_user_sessions = isset($_POST['saml_sso_remember_user_sessions']) && 'yes' === $_POST['saml_sso_remember_user_sessions'] ? 'yes' : 'no';
+  $saml_sso_remember_user_sessions =
+    isset($_POST['saml_sso_remember_user_sessions']) && 'yes' === $_POST['saml_sso_remember_user_sessions']
+    ? 'yes' : 'no';
+
   SamlSsoConfig::updateOptionData('saml_sso_remember_user_sessions', $saml_sso_remember_user_sessions);
 
   SamlSsoConfig::updateOptionData('saml_sso_backdoor_key', sanitize_text_field($_POST['saml_sso_backdoor_key']));

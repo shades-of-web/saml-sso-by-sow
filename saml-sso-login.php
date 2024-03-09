@@ -22,7 +22,7 @@ ob_start();
 
 <script>
   // Use DOMContentLoaded to ensure the DOM is fully loaded before manipulating
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     // Move the SSO login button into the login container and remove the standard login form
     var ssoBtnWrapper = document.querySelector('#sso_login_wrapper');
     var loginFormContainer = document.querySelector('#login');
@@ -45,7 +45,10 @@ ob_start();
 
 <div id="sso_login_wrapper">
   <!-- SSO login button with the URL fetched from site options -->
-  <a href="<?= esc_url(SamlSsoConfig::getOptionData('saml_sso_idp_sso_service_url')); ?>" id="sso_btn" class="button button-primary text-center d-block w-100 text-decoration-none">Login with SSO</a>
+  <a href="<?= esc_url(SamlSsoConfig::getOptionData('saml_sso_idp_sso_service_url')); ?>" id="sso_btn"
+    class="button button-primary text-center d-block w-100 text-decoration-none">
+    Login with SSO
+  </a>
 </div>
 
 <?php

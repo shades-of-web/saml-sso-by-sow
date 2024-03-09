@@ -51,7 +51,9 @@ class SamlSsoConfig
    */
   public static function updateOptionData(string $option_name, $option_value)
   {
-    return is_multisite() ? update_site_option($option_name, $option_value) : update_option($option_name, $option_value);
+    return is_multisite()
+      ? update_site_option($option_name, $option_value)
+      : update_option($option_name, $option_value);
   }
 }
 

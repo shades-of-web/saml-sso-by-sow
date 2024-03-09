@@ -49,7 +49,7 @@ wp_enqueue_script(
     </p>
     <p>Here are the sites you have access to:</p>
     <div class="row">
-      <?php foreach ($sites as $site): ?>
+      <?php foreach ($sites as $site) : ?>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
           <div class="card">
             <div class="card-body">

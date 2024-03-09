@@ -25,7 +25,7 @@ if (SamlSsoConfig::getOptionData('saml_sso_enable_sso') === 'yes') {
 
   add_action('init', function () {
     // Backdoor access check if enabled.
-    if (SamlSsoConfig::getOptionData('saml_sso_enable_backdoor') === 'yes' && isset($_GET['backdoor']) && sanitize_text_field($_GET['backdoor']) == SamlSsoConfig::getOptionData('saml_sso_backdoor_key')) {
+    if (SamlSsoConfig::getOptionData('saml_sso_enable_backdoor') === 'yes' && isset ($_GET['backdoor']) && sanitize_text_field($_GET['backdoor']) == SamlSsoConfig::getOptionData('saml_sso_backdoor_key')) {
       // Mail wp-admin for the backdoor access.
       wp_mail(get_option('admin_email'), 'Backdoor Access', 'Backdoor access to wp-admin has been used.');
     } else {
