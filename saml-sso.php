@@ -13,18 +13,19 @@
  * Network: true
  */
 
-// include_oncenecessary constants and functions for the SAML SSO plugin.
 include_once __DIR__ . '/saml-sso-constants-and-functions.php';
+
+use SAMLSSO\SamlSsoConfig;
 
 // include_oncethe SAML SSO dashboard page setup.
 include_once __DIR__ . '/saml-sso-dashboard-page.php';
 
 // Enable SSO functionality if it is enabled in the plugin settings.
-if (get_option_data('saml_sso_enable_sso') === 'yes') {
+if (SamlSsoConfig::getOptionData('saml_sso_enable_sso') === 'yes') {
 
   add_action('init', function () {
     // Backdoor access check if enabled.
-    if (get_option_data('saml_sso_enable_backdoor') === 'yes' && isset($_GET['backdoor']) && sanitize_text_field($_GET['backdoor']) == get_option_data('saml_sso_backdoor_key')) {
+    if (SamlSsoConfig::getOptionData('saml_sso_enable_backdoor') === 'yes' && isset($_GET['backdoor']) && sanitize_text_field($_GET['backdoor']) == SamlSsoConfig::getOptionData('saml_sso_backdoor_key')) {
       // Mail wp-admin for the backdoor access.
       wp_mail(get_option('admin_email'), 'Backdoor Access', 'Backdoor access to wp-admin has been used.');
     } else {

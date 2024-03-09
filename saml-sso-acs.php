@@ -4,12 +4,13 @@
 
 use OneLogin\Saml2\Auth;
 
+use SAMLSSO\SamlSsoConfig;
+
 /**
  * Load the WordPress environment and SAML configuration files.
  */
 include_once dirname(__DIR__, 3) . '/wp-load.php';
 include_once __DIR__ . '/vendor/autoload.php';
-include_once __DIR__ . '/saml-sso-constants-and-functions.php';
 
 /**
  * Define SAML settings from WordPress options.
@@ -19,14 +20,14 @@ $settings = [
   'strict' => true,
   'debug' => true,
   'sp' => [
-    'entityId' => get_site_option('saml_sso_sp_entity_id'),
-    'assertionConsumerService' => ['url' => SAML_SSO_ACS_URL],
-    'NameIDFormat' => get_site_option('saml_sso_sp_name_id_format'),
+    'entityId' => SamlSsoConfig::getOptionData('saml_sso_sp_entity_id'),
+    'assertionConsumerService' => ['url' => SamlSsoConfig::$ACS_URL],
+    'NameIDFormat' => SamlSsoConfig::getOptionData('saml_sso_sp_name_id_format'),
   ],
   'idp' => [
-    'entityId' => get_site_option('saml_sso_idp_entity_id'),
-    'singleSignOnService' => ['url' => get_site_option('saml_sso_idp_sso_service_url')],
-    'x509cert' => get_site_option('saml_sso_idp_509_certificate'),
+    'entityId' => SamlSsoConfig::getOptionData('saml_sso_idp_entity_id'),
+    'singleSignOnService' => ['url' => SamlSsoConfig::getOptionData('saml_sso_idp_sso_service_url')],
+    'x509cert' => SamlSsoConfig::getOptionData('saml_sso_idp_509_certificate'),
   ],
 ];
 
@@ -46,7 +47,7 @@ if (empty($auth->getErrors())) {
 
   if ($user) {
     // Set authentication cookie based on the 'remember user sessions' option.
-    wp_set_auth_cookie($user->ID, get_site_option('saml_sso_remember_user_sessions') === 'yes');
+    wp_set_auth_cookie($user->ID, SamlSsoConfig::getOptionData('saml_sso_remember_user_sessions') === 'yes');
 
     // Redirect super admins to the network admin dashboard.
     if (is_super_admin($user->ID)) {

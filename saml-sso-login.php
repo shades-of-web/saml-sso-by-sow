@@ -10,6 +10,8 @@
  * the login page content dynamically.
  */
 
+use SAMLSSO\SamlSsoConfig;
+
 // Start output buffering to capture the initial output
 ob_start();
 ?>
@@ -50,7 +52,7 @@ ob_start();
     }
   </style>
   <!-- SSO login button with the URL fetched from site options -->
-  <a href="<?= esc_url(get_site_option('saml_sso_idp_sso_service_url')); ?>" id="sso_btn" class="button button-primary">Login with SSO</a>
+  <a href="<?= esc_url(SamlSsoConfig::getOptionData('saml_sso_idp_sso_service_url')); ?>" id="sso_btn" class="button button-primary">Login with SSO</a>
 </div>
 
 <?php

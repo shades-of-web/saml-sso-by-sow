@@ -9,22 +9,25 @@
  * facilitating configuration of the SSO features and parameters.
  */
 
-wp_enqueue_script('saml-sso-by-sow-bootstrap5-toggle', SAML_SSO_PLUGIN_URL . 'assets/js/bs-toggle.js', array(), '5.0.4', true);
-wp_enqueue_style('saml-sso-by-sow-bootstrap5-toggle', SAML_SSO_PLUGIN_URL . 'assets/css/bs-toggle.css', array(), '5.0.4', 'all');
-
-wp_enqueue_style('saml-sso-by-sow-bootstrap', SAML_SSO_PLUGIN_URL . 'assets/css/bs-5-3-3.css', array(), '5.3.3', 'all');
-wp_enqueue_script('saml-sso-by-sow-bootstrap', SAML_SSO_PLUGIN_URL . 'assets/js/bs-5-3-3.js', array(), '5.3.3', true);
+use SAMLSSO\SamlSsoConfig;
 
 
-$saml_sso_enable_sso = get_option_data('saml_sso_enable_sso') ?? false;
-$saml_sso_enable_backdoor = get_option_data('saml_sso_enable_backdoor') ?? false;
-$saml_sso_backdoor_key = get_option_data('saml_sso_backdoor_key') ?? '';
-$saml_sso_remember_user_sessions = get_option_data('saml_sso_remember_user_sessions') ?? false;
-$saml_sso_sp_entity_id = get_option_data('saml_sso_sp_entity_id') ?? '';
-$saml_sso_sp_name_id_format = get_option_data('saml_sso_sp_name_id_format') ?? '';
-$saml_sso_idp_entity_id = get_option_data('saml_sso_idp_entity_id') ?? '';
-$saml_sso_idp_sso_service_url = get_option_data('saml_sso_idp_sso_service_url') ?? '';
-$saml_sso_idp_509_certificate = get_option_data('saml_sso_idp_509_certificate') ?? '';
+wp_enqueue_script('saml-sso-by-sow-bootstrap5-toggle', SamlSsoConfig::$PLUGIN_URL . 'assets/js/bs-toggle.js', array(), '5.0.4', true);
+wp_enqueue_style('saml-sso-by-sow-bootstrap5-toggle', SamlSsoConfig::$PLUGIN_URL . 'assets/css/bs-toggle.css', array(), '5.0.4', 'all');
+
+wp_enqueue_style('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PLUGIN_URL . 'assets/css/bs-5-3-3.css', array(), '5.3.3', 'all');
+wp_enqueue_script('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PLUGIN_URL . 'assets/js/bs-5-3-3.js', array(), '5.3.3', true);
+
+
+$saml_sso_enable_sso = SamlSsoConfig::getOptionData('saml_sso_enable_sso') ?? false;
+$saml_sso_enable_backdoor = SamlSsoConfig::getOptionData('saml_sso_enable_backdoor') ?? false;
+$saml_sso_backdoor_key = SamlSsoConfig::getOptionData('saml_sso_backdoor_key') ?? '';
+$saml_sso_remember_user_sessions = SamlSsoConfig::getOptionData('saml_sso_remember_user_sessions') ?? false;
+$saml_sso_sp_entity_id = SamlSsoConfig::getOptionData('saml_sso_sp_entity_id') ?? '';
+$saml_sso_sp_name_id_format = SamlSsoConfig::getOptionData('saml_sso_sp_name_id_format') ?? '';
+$saml_sso_idp_entity_id = SamlSsoConfig::getOptionData('saml_sso_idp_entity_id') ?? '';
+$saml_sso_idp_sso_service_url = SamlSsoConfig::getOptionData('saml_sso_idp_sso_service_url') ?? '';
+$saml_sso_idp_509_certificate = SamlSsoConfig::getOptionData('saml_sso_idp_509_certificate') ?? '';
 ?>
 
 <form method="post" action="<?= esc_url(add_query_arg('action', 'sow-sso-save', 'edit.php')); ?>">
@@ -62,7 +65,7 @@ $saml_sso_idp_509_certificate = get_option_data('saml_sso_idp_509_certificate') 
           </div>
           <div class="d-flex flex-column gap-3">
             <h2 class="m-0 h5">ACS URL</h2>
-            <input name="saml_sso_acs_url" type="text" class="form-control" value='<?= esc_url(SAML_SSO_ACS_URL); ?>' readonly>
+            <input name="saml_sso_acs_url" type="text" class="form-control" value='<?= esc_url(SamlSsoConfig::$ACS_URL); ?>' readonly>
           </div>
           <hr />
           <h2 class="h4">IDP Configurations</h2>
@@ -81,7 +84,7 @@ $saml_sso_idp_509_certificate = get_option_data('saml_sso_idp_509_certificate') 
         </div>
       </div>
       <div class=" col-6 d-none d-md-block text-right">
-        <img src="<?= esc_url(plugin_dir_url(__FILE__) . 'assets/images/SSO.png'); ?>" alt="SSO Image" class="img-fluid w-75" />
+        <img src="<?= esc_url(SamlSsoConfig::$PLUGIN_URL . 'assets/images/SSO.png'); ?>" alt="SSO Image" class="img-fluid w-75" />
       </div>
     </div>
   </div>

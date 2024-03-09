@@ -9,6 +9,8 @@
  * facilitating configuration of the SSO features and parameters.
  */
 
+use SAMLSSO\SamlSsoConfig;
+
 /**
  * Initializes the dashboard menu according to the site type (multisite or single).
  * Adds the SAML SSO settings page to the WordPress dashboard.
@@ -47,20 +49,20 @@ is_multisite()
 function saml_sso_config_save()
 {
   $saml_sso_enable_sso = isset($_POST['saml_sso_enable_sso']) && 'yes' === $_POST['saml_sso_enable_sso'] ? 'yes' : 'no';
-  update_option_data('saml_sso_enable_sso', $saml_sso_enable_sso);
+  SamlSsoConfig::updateOptionData('saml_sso_enable_sso', $saml_sso_enable_sso);
 
   $saml_sso_enable_backdoor = isset($_POST['saml_sso_enable_backdoor']) && 'yes' === $_POST['saml_sso_enable_backdoor'] ? 'yes' : 'no';
-  update_option_data('saml_sso_enable_backdoor', $saml_sso_enable_backdoor);
+  SamlSsoConfig::updateOptionData('saml_sso_enable_backdoor', $saml_sso_enable_backdoor);
 
   $saml_sso_remember_user_sessions = isset($_POST['saml_sso_remember_user_sessions']) && 'yes' === $_POST['saml_sso_remember_user_sessions'] ? 'yes' : 'no';
-  update_option_data('saml_sso_remember_user_sessions', $saml_sso_remember_user_sessions);
+  SamlSsoConfig::updateOptionData('saml_sso_remember_user_sessions', $saml_sso_remember_user_sessions);
 
-  update_option_data('saml_sso_backdoor_key', sanitize_text_field($_POST['saml_sso_backdoor_key']));
-  update_option_data('saml_sso_sp_entity_id', sanitize_text_field($_POST['saml_sso_sp_entity_id']));
-  update_option_data('saml_sso_sp_name_id_format', sanitize_text_field($_POST['saml_sso_sp_name_id_format']));
-  update_option_data('saml_sso_idp_entity_id', sanitize_text_field($_POST['saml_sso_idp_entity_id']));
-  update_option_data('saml_sso_idp_sso_service_url', sanitize_text_field($_POST['saml_sso_idp_sso_service_url']));
-  update_option_data('saml_sso_idp_509_certificate', sanitize_text_field($_POST['saml_sso_idp_509_certificate']));
+  SamlSsoConfig::updateOptionData('saml_sso_backdoor_key', sanitize_text_field($_POST['saml_sso_backdoor_key']));
+  SamlSsoConfig::updateOptionData('saml_sso_sp_entity_id', sanitize_text_field($_POST['saml_sso_sp_entity_id']));
+  SamlSsoConfig::updateOptionData('saml_sso_sp_name_id_format', sanitize_text_field($_POST['saml_sso_sp_name_id_format']));
+  SamlSsoConfig::updateOptionData('saml_sso_idp_entity_id', sanitize_text_field($_POST['saml_sso_idp_entity_id']));
+  SamlSsoConfig::updateOptionData('saml_sso_idp_sso_service_url', sanitize_text_field($_POST['saml_sso_idp_sso_service_url']));
+  SamlSsoConfig::updateOptionData('saml_sso_idp_509_certificate', sanitize_text_field($_POST['saml_sso_idp_509_certificate']));
 
   wp_safe_redirect(
     add_query_arg(

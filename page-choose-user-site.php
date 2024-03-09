@@ -14,6 +14,12 @@
 if (!isset($user, $sites)) {
   wp_die('This template should not be accessed directly.');
 }
+
+use SAMLSSO\SamlSsoConfig;
+
+wp_enqueue_style('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PLUGIN_URL . 'assets/css/bs-5-3-3.css', array(), '5.3.3', 'all');
+wp_enqueue_script('saml-sso-by-sow-bootstrap', SamlSsoConfig::$PLUGIN_URL . 'assets/js/bs-5-3-3.js', array(), '5.3.3', true);
+
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +28,7 @@ if (!isset($user, $sites)) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Sites</title>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <title>SAML SSO User Sites</title>
 </head>
 
 <body>
