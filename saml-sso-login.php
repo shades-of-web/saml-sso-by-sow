@@ -1,5 +1,7 @@
 <?php
 
+// test
+
 /**
  * Custom SSO Integration for WordPress Login Page
  *
@@ -8,16 +10,41 @@
  * the login page content dynamically.
  */
 
+use SAMLSSO\SamlSsoConfig;
+
+wp_enqueue_style(
+  'saml-sso-by-sow-bootstrap',
+  SamlSsoConfig::$pluginUrl . 'assets/css/bs-5-3-3.css',
+  array(),
+  '5.3.3',
+  'all'
+);
+wp_enqueue_script(
+  'saml-sso-by-sow-bootstrap',
+  SamlSsoConfig::$pluginUrl . 'assets/js/bs-5-3-3.js',
+  array(),
+  '5.3.3',
+  true
+);
+
 // Start output buffering to capture the initial output
 ob_start();
+
 ?>
 
 <script>
   // Use DOMContentLoaded to ensure the DOM is fully loaded before manipulating
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     // Move the SSO login button into the login container and remove the standard login form
     var ssoBtnWrapper = document.querySelector('#sso_login_wrapper');
     var loginFormContainer = document.querySelector('#login');
+    loginFormContainer.style.height = '100vh';
+    loginFormContainer.style.width = '100%';
+    loginFormContainer.style.padding = '0 !important';
+    loginFormContainer.style.display = 'flex';
+    loginFormContainer.style.flexDirection = 'column';
+    loginFormContainer.style.justifyContent = 'center';
+    loginFormContainer.style.alignItems = 'center';
     if (loginFormContainer && ssoBtnWrapper) {
       loginFormContainer.appendChild(ssoBtnWrapper); // Make the SSO button a child of the login container
       var loginForm = document.querySelector('#loginform');
@@ -29,26 +56,11 @@ ob_start();
 </script>
 
 <div id="sso_login_wrapper">
-  <style>
-    /* Custom styles for the login page and SSO button */
-    #login {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0 !important;
-    }
-
-    #sso_btn {
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      width: 100%;
-    }
-  </style>
   <!-- SSO login button with the URL fetched from site options -->
-  <a href="<?= esc_url(get_site_option('saml_sso_idp_sso_service_url')); ?>" id="sso_btn" class="button button-primary">Login with SSO</a>
+  <a href="<?= esc_url(SamlSsoConfig::getOptionData('saml_sso_idp_sso_service_url')); ?>" id="sso_btn"
+    class="button button-primary text-center d-block w-100 text-decoration-none">
+    Login with SSO
+  </a>
 </div>
 
 <?php
