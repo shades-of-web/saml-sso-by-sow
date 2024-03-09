@@ -8,29 +8,29 @@ class SamlSsoConfig
    * The absolute path to the directory containing the SAML SSO plugin.
    * @var string
    */
-  public static $PLUGIN_DIR;
+  public static $PluginDir;
 
   /**
    * The URL to the directory containing the SAML SSO plugin.
    * @var string
    */
-  public static $PLUGIN_URL;
+  public static $PluginUrl;
 
   /**
    * The URL used for the SAML Assertion Consumer Service (ACS).
    * This URL is typically called by the Identity Provider (IdP) after authentication.
    * @var string
    */
-  public static $ACS_URL;
+  public static $ACSurl;
 
   /**
    * Initialize the class properties.
    */
   public static function init()
   {
-    self::$PLUGIN_DIR = plugin_dir_path(__FILE__);
-    self::$PLUGIN_URL = plugin_dir_url(__FILE__);
-    self::$ACS_URL = self::$PLUGIN_URL . 'saml-sso-acs.php?acs';
+    self::$PluginDir = plugin_dir_path(__FILE__);
+    self::$PluginUrl = plugin_dir_url(__FILE__);
+    self::$ACSurl = self::$PluginUrl . 'saml-sso-acs.php?acs';
   }
 
   /**

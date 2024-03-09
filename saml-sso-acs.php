@@ -21,7 +21,7 @@ $settings = [
   'debug' => true,
   'sp' => [
     'entityId' => SamlSsoConfig::getOptionData('saml_sso_sp_entity_id'),
-    'assertionConsumerService' => ['url' => SamlSsoConfig::$ACS_URL],
+    'assertionConsumerService' => ['url' => SamlSsoConfig::$ACSurl],
     'NameIDFormat' => SamlSsoConfig::getOptionData('saml_sso_sp_name_id_format'),
   ],
   'idp' => [
