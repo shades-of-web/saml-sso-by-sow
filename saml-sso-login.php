@@ -12,8 +12,20 @@
 
 use SAMLSSO\SamlSsoConfig;
 
-wp_enqueue_style('saml-sso-by-sow-bootstrap', SamlSsoConfig::$pluginUrl . 'assets/css/bs-5-3-3.css', array(), '5.3.3', 'all');
-wp_enqueue_script('saml-sso-by-sow-bootstrap', SamlSsoConfig::$pluginUrl . 'assets/js/bs-5-3-3.js', array(), '5.3.3', true);
+wp_enqueue_style(
+  'saml-sso-by-sow-bootstrap',
+  SamlSsoConfig::$pluginUrl . 'assets/css/bs-5-3-3.css',
+  array(),
+  '5.3.3',
+  'all'
+);
+wp_enqueue_script(
+  'saml-sso-by-sow-bootstrap',
+  SamlSsoConfig::$pluginUrl . 'assets/js/bs-5-3-3.js',
+  array(),
+  '5.3.3',
+  true
+);
 
 // Start output buffering to capture the initial output
 ob_start();

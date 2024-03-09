@@ -15,7 +15,7 @@ $found = false; // Flag to determine if wp-load.php has been found.
 while (!$found && $wp_load_path != '/' && is_dir($wp_load_path)) {
   $potential_wp_load = $wp_load_path . '/wp-load.php';
   if (file_exists($potential_wp_load)) {
-    require_once($potential_wp_load);
+    require_once $potential_wp_load;
     $found = true; // Set found to true to exit the loop.
     break; // Exit the loop since we've found wp-load.php
   }

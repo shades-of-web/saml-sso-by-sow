@@ -40,7 +40,6 @@ wp_enqueue_script(
   true
 );
 
-
 $enable_sso = SamlSsoConfig::getOptionData('saml_sso_enable_sso') ?? false;
 $enable_backdoor = SamlSsoConfig::getOptionData('saml_sso_enable_backdoor') ?? false;
 $backdoor_key = SamlSsoConfig::getOptionData('saml_sso_backdoor_key') ?? '';
@@ -51,8 +50,8 @@ $idp_entity_id = SamlSsoConfig::getOptionData('saml_sso_idp_entity_id') ?? '';
 $idp_sso_service_url = SamlSsoConfig::getOptionData('saml_sso_idp_sso_service_url') ?? '';
 $idp_509_certificate = SamlSsoConfig::getOptionData('saml_sso_idp_509_certificate') ?? '';
 
-$plugin_image_url = SamlSsoConfig::$pluginUrl . 'assets/images/SSO.png'
-  ?>
+$plugin_image_url = SamlSsoConfig::$pluginUrl . 'assets/images/SSO.png';
+?>
 
 <form method="post" action="<?= esc_url(add_query_arg('action', 'sow-sso-save', 'edit.php')); ?>">
   <div class="container-fluid mt-3">
@@ -62,7 +61,6 @@ $plugin_image_url = SamlSsoConfig::$pluginUrl . 'assets/images/SSO.png'
       <div class="col-12 col-md-6">
         <div class="d-flex flex-column gap-4">
           <h2 class="h4 mt-2">Global Toggles</h2>
-
           <div class="d-flex justify-content-start align-items-center gap-4">
             <h2 class="m-0 h5">Enable Plugin</h2>
             <input name="saml_sso_enable_sso" type="checkbox" value="yes" <?php checked('yes', $enable_sso) ?>
@@ -70,14 +68,15 @@ $plugin_image_url = SamlSsoConfig::$pluginUrl . 'assets/images/SSO.png'
           </div>
           <div class="d-flex justify-content-start align-items-center gap-4">
             <h2 class="m-0 h5">Enable Backdoor Login</h2>
-            <input name="saml_sso_enable_backdoor" type="checkbox" value="yes" data-toggle="toggle" data-size="sm" <?php checked('yes', $enable_backdoor) ?>>
+            <input <?php checked('yes', $enable_backdoor) ?> name="saml_sso_enable_backdoor" type="checkbox" value="yes"
+              data-toggle="toggle" data-size="sm">
             <input type="text" name="saml_sso_backdoor_key" class="form-control w-50"
               value='<?= esc_html($backdoor_key); ?>'>
           </div>
-
           <div class="d-flex justify-content-start align-items-center gap-4">
             <h2 class="m-0 h5">Remember User Sessions</h2>
-            <input name="saml_sso_remember_user_sessions" type="checkbox" value="yes" <?php checked('yes', $remember_user_sessions) ?> data-toggle="toggle" data-size="sm">
+            <input name="saml_sso_remember_user_sessions" type="checkbox" value="yes" data-toggle="toggle"
+              data-size="sm" <?php checked('yes', $remember_user_sessions) ?>>
           </div>
           <hr />
           <h2 class="h4">Service Provider Configurations</h2>
